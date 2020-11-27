@@ -6,14 +6,16 @@ class MovieItem extends Component {
         super(props);
     }
 
-    clickElementoSeleccionado(movie){
+    clickSelectMovie(movie){
         console.log(movie.original_title)
+        this.props.history.push('/moviedata');
+        localStorage.setItem('movie', JSON.stringify(movie));
     }
     render(){
         return(
-            <div >
+            <div key={this.props.item.id}>
             <p>{this.props.item.original_title}</p>
-            <img className = 'imageMovie' 
+            <img className = 'imageMovie' onClick={this.clickSelectMovie}
             src ={'https://image.tmdb.org/t/p/w500' + this.props.item.poster_path} alt=""></img>
             </div>
         )
