@@ -8,12 +8,12 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 function App() {
   return (
-    <Fragment>
       <BrowserRouter>
+      <Switch>
         <Route path='/' exact component={MovieList} />
         <Route path='/moviedata' exact component={MovieData} />
+        </Switch>
       </BrowserRouter>
-   </Fragment>
   );
 }
 

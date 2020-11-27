@@ -8,14 +8,14 @@ class MovieItem extends Component {
 
     clickSelectMovie(movie){
         console.log(movie.original_title)
-        this.props.history.push('/moviedata');
         localStorage.setItem('movie', JSON.stringify(movie));
+        this.props.history.push('/moviedata');
     }
     render(){
         return(
             <div key={this.props.item.id}>
             <p>{this.props.item.original_title}</p>
-            <img className = 'imageMovie' onClick={this.clickSelectMovie}
+            <img className = 'imageMovie' onClick={() => this.clickSelectMovie(this.props.item)}
             src ={'https://image.tmdb.org/t/p/w500' + this.props.item.poster_path} alt=""></img>
             </div>
         )
