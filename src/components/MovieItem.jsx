@@ -7,9 +7,15 @@ class MovieItem extends Component {
     }
 
     clickSelectMovie(movie){
-        console.log(movie.original_title)
+        //console.log(movie.original_title)
+        console.log("movie set storage", movie)
         localStorage.setItem('movie', JSON.stringify(movie));
+        //console.log("this",this);
+        //console.log("this.props",this.props);
+        //console.log("this.props.history",this.props.history);
+        //console.log("props",props);
         this.props.history.push('/moviedata');
+        
     }
     render(){
         return(

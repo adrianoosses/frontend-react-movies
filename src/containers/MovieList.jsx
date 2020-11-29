@@ -33,10 +33,10 @@ class MovieList extends Component {
         .catch( (err) => console.log(err) ) ;
     }
     
-
-
     onNextPage = () =>{
         this.setState( prevState => ({ page:  ++prevState.page }) )
+        console.log("this.props",this.props);
+        console.log("this.props.history",this.props.history);
     }
 
     onBeforePage = () =>{
@@ -51,7 +51,7 @@ class MovieList extends Component {
                 </div> 
                 <div className = "divGeneral">
                     {
-                        this.state.movies.map(item => <MovieItem item={item}/>
+                        this.state.movies.map(item => <MovieItem item={item} history={this.props.history}/>
                         )
                     }
                 </div>

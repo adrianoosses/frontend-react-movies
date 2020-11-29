@@ -11,10 +11,11 @@ class MovieList extends Component {
     }
 
     componentDidMount(){
-        let cMovie = localStorage.getItem('movie');
-        console.log('cMovie', cMovie);
+        let cMovie = JSON.parse(localStorage.getItem('movie'));
+        //console.log('cMovieeeeee', cMovie);
+        //console.log('type of cMovieeeeee', typeof(cMovie));
+        //console.log('cMovieeeeee parse', JSON.parse(cMovie));
         this.setState({movie: cMovie })
-
     }
     
 
@@ -28,10 +29,8 @@ class MovieList extends Component {
                 <div>
                     <button onClick={this.onMenu}> Back to Menu </button>
                 </div> 
-                <div className = "divGeneral">
-                    {
-                        this.state.movies.map(item => console.log(item)) 
-                    }
+                <div>
+                <p>{this.state.movie.original_title}</p>
                 </div>
             </Fragment>
             
