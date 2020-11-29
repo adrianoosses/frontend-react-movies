@@ -9,9 +9,17 @@ Movie service app frontend
 
 <a name="inst"></a>
 ## SET UP
-Github Page: https://adrianoosses.github.io/frontend-react-movies/
+### OPTION 1:
+- Github Page: https://adrianoosses.github.io/frontend-react-movies/
 <br>
-Heroku: https://frontend-movies-app.herokuapp.com/
+- Heroku: https://frontend-movies-app.herokuapp.com/
+
+### OPTION 2:
+Download and run on terminal typing:
+```
+npm start
+```
+
 
 <a name="be"></a>
 ## DATABASE
@@ -23,9 +31,10 @@ You'll start on movies collections. Each page shows 20 movies titles and their p
 If you click on image, app shows details of movie selected.
 <a name="tech"></a>
 ## TECHNOLOGIES USED
-React
-Axios
-Redux
+- JS
+- React
+- Axios
+- Redux
 
 <a name="author"></a>
 ## AUTHOR
