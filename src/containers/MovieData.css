@@ -1,0 +1,19 @@
+.movieDataContainer{
+    width: 60em;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-left: 2em;
+}
+
+.moviePhoto{
+    margin-top: 1em;
+    width: 30%;
+}
+.movieContent{
+    margin-left: 1em;
+    width: 70%;
+}
+h1{
+    color: gray;
+}

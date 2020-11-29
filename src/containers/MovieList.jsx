@@ -19,7 +19,6 @@ class MovieList extends Component {
         .then((api) =>{
             this.setState({movies: api.data.results })
         })
-        
         .catch( (err) => console.log(err) ) ;
     }
     
@@ -48,6 +47,7 @@ class MovieList extends Component {
                 <div>
                     <button onClick={this.onBeforePage}> Back </button>
                     <button onClick={this.onNextPage}> Next </button>
+                    <p>Page: {this.state.page}</p>
                 </div> 
                 <div className = "divGeneral">
                     {
@@ -59,6 +59,11 @@ class MovieList extends Component {
             
         )
     }
+    /*
+    componentWillUnmount() {
+        mydatastore.unsubscribe(this);
+    }
+    */
 }
 
 export default MovieList;

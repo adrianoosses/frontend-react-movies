@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import './MovieList.css'
+import './MovieData.css'
 
 class MovieList extends Component {
     constructor(props){
@@ -12,10 +12,8 @@ class MovieList extends Component {
 
     componentDidMount(){
         let cMovie = JSON.parse(localStorage.getItem('movie'));
-        //console.log('cMovieeeeee', cMovie);
-        //console.log('type of cMovieeeeee', typeof(cMovie));
-        //console.log('cMovieeeeee parse', JSON.parse(cMovie));
         this.setState({movie: cMovie })
+        //this.props.subscribe(this);
     }
     
 
@@ -26,11 +24,17 @@ class MovieList extends Component {
     render(){
         return (
             <Fragment>
-                <div>
-                    <button onClick={this.onMenu}> Back to Menu </button>
-                </div> 
-                <div>
-                <p>{this.state.movie.original_title}</p>
+                <div><button onClick={this.onMenu}> Back to Menu </button></div> 
+                <div className='movieDataContainer'>
+                    <img className='moviePhoto'
+                        src ={'https://image.tmdb.org/t/p/w500' + this.state.movie.poster_path} alt="">
+                    </img>
+                    <div className='movieContent'>
+                        <h2>{this.state.movie.original_title}</h2>
+                        <p>{this.state.movie.release_date}</p>
+                        <p>{this.state.movie.vote_average}</p>
+                        <p>{this.state.movie.overview}</p>
+                    </div>
                 </div>
             </Fragment>
             
