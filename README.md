@@ -10,6 +10,7 @@ Movie service app frontend
 <a name="inst"></a>
 ## SET UP
 Github Page: https://adrianoosses.github.io/frontend-react-movies/
+Heroku: https://frontend-movies-app.herokuapp.com/
 
 <a name="be"></a>
 ## DATABASE
