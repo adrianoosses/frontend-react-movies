@@ -14,6 +14,7 @@ const Login = (props) => {
             let msgReceived = await axios.post('https://movie-service-2.herokuapp.com/user/login', {email, password});
             localStorage.setItem('tokenUsr', msgReceived.data.tokenSend);
             localStorage.setItem('email', email);
+            console.log("Email: ", email);
             props.setUser(email);
             //notification.success({ message: 'Logged!', description: 'User logged'});
             history.push('/');
