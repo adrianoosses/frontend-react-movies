@@ -5,7 +5,7 @@ export default class Profile extends Component {
     constructor(){
         super();
         this.state = { 
-            user: []
+            userArr: []
          }
     }
 
@@ -14,10 +14,27 @@ export default class Profile extends Component {
             console.log("get profile");
             let email = localStorage.getItem('email');
             console.log("email get user: ", email);
+            
+            
+            axios.get(`https://movie-service-2.herokuapp.com/user/profile?email=${email}`)
+            .then(usr => {
+                //console.log("JSON.stringify(appo.data[0]): " + JSON.stringify(appo.data[0]));
+                this.setState( {
+                    userArr: usr.data
+                } );
+            } );
+            
+            /*
+           try{
             let reqUser = await axios.get(`https://movie-service-2.herokuapp.com/user/profile?email=${email}`);
-            this.setState({
-                user: reqUser
-            })
+            
+            console.log("this.state.movies",this.state.movies)
+           }catch{
+            console.log("error")
+           }
+            
+            
+           */
             //localStorage.setItem('tokenUsr', msgReceived.data.tokenSend);
             //localStorage.setItem('email', email);
             //console.log("user: ", user);
@@ -31,8 +48,11 @@ export default class Profile extends Component {
     }
 
     render() {
-        let userObj = this.state.user;
-        console.log("userObj", userObj);
+        let userObj = this.state.userArr;
+
+        console.log("userObj", userObj.name);
+        //userObj.map( item => console.log(item.data))
+        //console.log("userObj", userObj.data.email);
         //let userObj = JSON.parse(this.state.user);
         //userObj.map( item => console.log(item.name));
         //console.log("userObj: ", userObj.data.email);
@@ -45,7 +65,7 @@ export default class Profile extends Component {
             <div>
                 <h2>Profile</h2>
                 {/*user.map( item => console.log(item.name))*/}
-                <p>Name:  </p>
+                <p>Name: {this.state.user} </p>
             </div>
         )
     }
