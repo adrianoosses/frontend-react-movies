@@ -1,0 +1,30 @@
+.mainContainer{
+    height: 20em;
+    width: 10em;
+    //background-color: green;
+    background-color: var(--grayColor);
+
+    .headerHome{
+       height: 15em;
+       background-color: var(--darkGrayColor);
+    }
+    .bodyHome{
+        display: flex;
+        flex-direction: row;
+        height: 15em;
+        background-color: var(--darkGrayColor);
+    }
+
+    .division1{
+        height: 3em;
+        width: 3em;
+        background-color: white;
+    }
+
+    .division2{
+        height: 3em;
+        width: 3em;
+        background-color: white;
+    }
+
+}
