@@ -11,7 +11,7 @@ const Login = (props) => {
         console.log("Logging");
         try {
             event.preventDefault();
-            let msgReceived = await axios.post('https://movie-service-2.herokuapp.com/user/login', {email, password});
+            let msgReceived = await axios.post('https://backend-movie-service.herokuapp.com/user/login', {email, password});
             localStorage.setItem('tokenUsr', msgReceived.data.tokenSend);
             localStorage.setItem('email', email);
             console.log("Email: ", email);

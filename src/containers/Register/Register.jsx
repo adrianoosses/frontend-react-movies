@@ -19,7 +19,7 @@ const Register = () => {
             }
             console.log("user: ", user);
             console.log("type of user: ", typeof user);
-            await axios.post('https://movie-service-2.herokuapp.com/user/', user)
+            await axios.post('https://backend-movie-service.herokuapp.com/user/', user)
             //notification.success({ message: 'Registered!', description: 'User successfully registered' })
             history.push('/login')
         } catch (error) {
