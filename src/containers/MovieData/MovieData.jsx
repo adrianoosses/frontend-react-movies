@@ -6,7 +6,8 @@ class MovieList extends Component {
         super(props)
 
         this.state = { 
-            movie: []
+            movie: [],
+            days: 0
          }
     }
 
@@ -21,18 +22,19 @@ class MovieList extends Component {
         this.props.history.push('/');
     }
 
-    rentMovie = async () =>{
+    rentMovie = async (days) =>{
         console.log("Rent a movie now!");
         const email = localStorage.getItem('email');
-        console.log("email", email);
+        //console.log("email", email);
         let reqUser = await axios.get(`https://backend-movie-service.herokuapp.com/user/profile?email=${email}`);
         let idUser = await reqUser.data._id;
-        console.log(reqUser.data._id)
+        //console.log(reqUser.data._id)
         const order = {
             "userId": idUser,
-            "movieId": this.state.movie.id
+            "movieId": this.state.movie.id,
+            "daysToRent": days
         }
-        console.log("order: ", order);
+        //console.log("order: ", order);
         let reqOrder = await axios.post(`https://backend-movie-service.herokuapp.com/order/`, order);
         console.log("reqorder: ", await reqOrder);
     }
@@ -50,7 +52,11 @@ class MovieList extends Component {
                         <p>{this.state.movie.release_date}</p>
                         <p>{this.state.movie.vote_average}</p>
                         <p>{this.state.movie.overview}</p>
-                        <button onClick={() => this.rentMovie()}>RENT</button>
+                        <p>RENT:</p>
+                        <button onClick={() => this.rentMovie(7)}>7 days</button>
+                        <button onClick={() => this.rentMovie(14)}>14 days</button>
+                        <button onClick={() => this.rentMovie(21)}>21 days</button>
+                        <button onClick={() => this.rentMovie(30)}>1 month</button>
                     </div>
                 </div>
             </Fragment>
