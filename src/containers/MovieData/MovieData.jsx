@@ -7,7 +7,8 @@ class MovieList extends Component {
 
         this.state = { 
             movie: [],
-            days: 0
+            days: 0,
+            msg: ""
          }
     }
 
@@ -37,6 +38,7 @@ class MovieList extends Component {
         //console.log("order: ", order);
         let reqOrder = await axios.post(`https://backend-movie-service.herokuapp.com/order/`, order);
         console.log("reqorder: ", await reqOrder);
+        this.setState({msg: await reqOrder.data.msg});
     }
     
     render(){
@@ -57,6 +59,7 @@ class MovieList extends Component {
                         <button onClick={() => this.rentMovie(14)}>14 days</button>
                         <button onClick={() => this.rentMovie(21)}>21 days</button>
                         <button onClick={() => this.rentMovie(30)}>1 month</button>
+                        <p>{this.state.msg}</p>
                     </div>
                 </div>
             </Fragment>

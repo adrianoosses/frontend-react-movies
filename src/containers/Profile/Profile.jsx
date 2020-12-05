@@ -8,6 +8,7 @@ export default class Profile extends Component {
         super();
         this.state = { 
             userArr: [],
+            order: [],
             movie: []
          }
     }
@@ -25,16 +26,38 @@ export default class Profile extends Component {
         }
     }
 
+    getEmail = () =>{
+        return localStorage.getItem('email');
+    }
+
+    setOrderInState = async (email) =>{
+        let reqOrder = await axios.get(`https://backend-movie-service.herokuapp.com/order/myOrders?email=${email}`);
+        console.log("order2: ", await reqOrder.data.content[0]);
+        this.setState({order: await reqOrder.data.content[0]})
+        return (await reqOrder.data.content[0]);
+    }
+
     getMovie = async () =>{
         console.log("Showing movies!...");
-        const email = localStorage.getItem('email');
-        console.log("email", email);     
-        let reqOrder = await axios.get(`https://backend-movie-service.herokuapp.com/order/myOrders?email=${email}`);
-        console.log("order: ", await reqOrder.data);
-        const movieId = await reqOrder.data.content[0].movieId
-        console.log("movieId: ", await reqOrder.data.content[0].movieId);
+        const email = this.getEmail();
+        if(!email){
+            console.log("Log In first")
+            return false;
+        }
+
+        //console.log("email", email);     
+
+        const reqOrder = await this.setOrderInState(email)
+        if(!reqOrder){
+            console.log("No order found");
+            return false;
+        }
+
+        //console.log("reqOrder: ", reqOrder);
+        const movieId = await reqOrder.movieId
+        //console.log("movieId: ", movieId);
         let reqMovie = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=b5138e06a3a9125b8c326498bbeae997&language=en-US`);
-        console.log("movie: ", await reqMovie);
+        //console.log("movie: ", await reqMovie);
         this.setState({movie: await reqMovie.data})
     }
 
@@ -45,6 +68,7 @@ export default class Profile extends Component {
 
     render() {
         let userObj = this.state.userArr;
+        let orderObj = this.state.order;
         console.log("movie path", this.state.movie.poster_path)
         return (
             <div>
@@ -57,6 +81,8 @@ export default class Profile extends Component {
                     <div className="containerMovie">
                         <div>{this.state.movie.original_title}</div>
                         <img className="moviePhoto" src={'https://image.tmdb.org/t/p/w500' + this.state.movie.poster_path} alt=""></img>
+                        {console.log("refunDate:", orderObj)}
+                        <div>Give back at: {(orderObj)?orderObj.refundDate:"No order already"}</div>
                     </div>
                 </div>
                 

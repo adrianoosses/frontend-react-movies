@@ -7,7 +7,8 @@ import './Global.css'
 import Profile from './containers/Profile/Profile';
 import Buttons from './components/Buttons/Buttons';
 import Register from './containers/Register/Register';
-import Login from './containers/Login/Login'
+import Login from './containers/Login/Login';
+import Logout from './containers/Logout/Logout';
 
 
 import React, { useState } from 'react';
@@ -20,12 +21,13 @@ function App() {
   return (
       <BrowserRouter className="appStyle">
       <Header/>
-      <Buttons />
+      <Buttons user={user} setUser={setUser}/>
       <Switch>
         <Route path='/' exact component={MovieList} />
         <Route path='/moviedata' exact component={MovieData} />
         <Route path='/register' exact component={Register} />
         <Route path="/login" children={<Login user={user} setUser={setUser}/>} exact/>
+        <Route path="/logout" children={<Logout user={user} setUser={setUser}/>} exact/>
         <Route path='/profile' exact component={Profile} />
         </Switch>
       </BrowserRouter>

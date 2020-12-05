@@ -6,19 +6,17 @@ const Buttons = (props) => {
     return (
         <div className="buttonContainer">
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/register">Sign Up</NavLink>
-            <NavLink to="/login">Log In</NavLink>
             <NavLink to="/profile">Profile</NavLink>
-            {/*props.user ?
+            {props.user ?
                 <>
-                    <span class="logoutText">User:{localStorage.getItem('email')}</span>
+                    <span class="logoutText">Hi, {localStorage.getItem('email')}</span>
                     <NavLink to="/logout">Logout</NavLink>
                 </> :
                 <>
-                    <NavLink to="/login">Login</NavLink>
-                    <NavLink to="/register">Register</NavLink>
+                    <NavLink to="/login">Log In</NavLink>
+                    <NavLink to="/register">Sign Up</NavLink>
                 </>
-                */}
+            }
         </div>
     )
 }
