@@ -4,7 +4,13 @@
     text-align: center;
 }
 h1{
-    color: red;
+    color: rgb(255, 0, 0) !important;
     text-align: center;
     font-size: 50px;
+}
+body{
+    background-color: black !important;
+}
+p{
+    color: white !important;
 }

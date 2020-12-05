@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
-//import { notification } from 'antd'
+import { notification } from 'antd'
+
 
 const Login = (props) => {
     const history = useHistory();
@@ -12,15 +13,17 @@ const Login = (props) => {
         try {
             event.preventDefault();
             let msgReceived = await axios.post('https://backend-movie-service.herokuapp.com/user/login', {email, password});
-            localStorage.setItem('tokenUsr', msgReceived.data.tokenSend);
+            let token = await msgReceived.data.token;
+            localStorage.setItem('tokenUsr', token);
             localStorage.setItem('email', email);
             console.log("Email: ", email);
+            console.log("token rec: ", token);
             props.setUser(email);
-            //notification.success({ message: 'Logged!', description: 'User logged'});
+            notification.success({ message: 'Logged!', description: 'User logged'});
             history.push('/');
         } catch (error) {
             console.error(error)
-            //notification.error({ message: 'Login failed', description: 'there was a problem loging' })
+            notification.error({ message: 'Login failed', description: 'there was a problem loging' })
         }
     }
     return (

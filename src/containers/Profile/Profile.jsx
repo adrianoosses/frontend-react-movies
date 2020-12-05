@@ -15,9 +15,13 @@ export default class Profile extends Component {
 
     async getUser(){
         try {
+            let token =  localStorage.getItem('tokenUsr')
+            console.log("token", token);
             console.log("get profile");
             let email = localStorage.getItem('email');
-            let reqUser = await axios.get(`https://backend-movie-service.herokuapp.com/user/profile?email=${email}`);
+            let reqUser = await axios.get(`https://backend-movie-service.herokuapp.com/user/profile?email=${email}`, 
+            { headers: {authorization: token} });
+            
             
             this.setState({userArr: await reqUser.data})
             //history.push('/');
@@ -47,13 +51,14 @@ export default class Profile extends Component {
 
         //console.log("email", email);     
 
-        const reqOrder = await this.setOrderInState(email)
+        const reqOrder = await this.setOrderInState(email);
         if(!reqOrder){
             console.log("No order found");
             return false;
         }
 
-        //console.log("reqOrder: ", reqOrder);
+        console.log("reqOrder: ", reqOrder);
+        console.log("reqOrder2: ", this.state.order);
         const movieId = await reqOrder.movieId
         //console.log("movieId: ", movieId);
         let reqMovie = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=b5138e06a3a9125b8c326498bbeae997&language=en-US`);
@@ -69,6 +74,7 @@ export default class Profile extends Component {
     render() {
         let userObj = this.state.userArr;
         let orderObj = this.state.order;
+        console.log("orderrr:", orderObj);
         console.log("movie path", this.state.movie.poster_path)
         return (
             <div>
@@ -81,8 +87,8 @@ export default class Profile extends Component {
                     <div className="containerMovie">
                         <div>{this.state.movie.original_title}</div>
                         <img className="moviePhoto" src={'https://image.tmdb.org/t/p/w500' + this.state.movie.poster_path} alt=""></img>
-                        {console.log("refunDate:", orderObj)}
-                        <div>Give back at: {(orderObj)?orderObj.refundDate:"No order already"}</div>
+                        
+                        <div><p>Give back at: {(this.state.order)?this.state.order.refundDate:"No order already"}</p></div>
                     </div>
                 </div>
                 

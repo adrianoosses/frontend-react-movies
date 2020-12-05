@@ -75,6 +75,7 @@ class MovieList extends Component {
         const { search, text, movies } = this.state;
         return (
             <LoaderPage condiction={movies.length === 0} > 
+            
                 <div>
                     <button onClick={this.onBeforePage}> Back </button>
                     <input type="text" onChange={ event => this.onHandleChange(event) } />
