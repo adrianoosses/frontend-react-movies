@@ -27,9 +27,11 @@ class MovieList extends Component {
         console.log("Rent a movie now!");
         const email = localStorage.getItem('email');
         //console.log("email", email);
-        let reqUser = await axios.get(`https://backend-movie-service.herokuapp.com/user/profile?email=${email}`);
+        let token =  localStorage.getItem('tokenUsr');
+        let reqUser = await axios.get(`https://backend-movie-service.herokuapp.com/user/profile?email=${email}`,
+        { headers: {authorization: token} });
         let idUser = await reqUser.data._id;
-        //console.log(reqUser.data._id)
+        console.log(reqUser.data._id)
         const order = {
             "userId": idUser,
             "movieId": this.state.movie.id,
