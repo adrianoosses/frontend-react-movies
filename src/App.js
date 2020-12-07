@@ -19,6 +19,9 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 function App() {
   const [user, setUser] = useState(null);
+  window.onbeforeunload = function() {
+    localStorage.clear();
+ }
   return (
       <BrowserRouter className="appStyle" >
         <Buttons user={user} setUser={setUser}/>

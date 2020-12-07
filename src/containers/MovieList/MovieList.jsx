@@ -78,14 +78,14 @@ class MovieList extends Component {
             
                 <div>
                     <button onClick={this.onBeforePage}> Back </button>
-                    <input type="text" onChange={ event => this.onHandleChange(event) } />
                     <button onClick={this.onNextPage}> Next </button>
+                    <input type="text" onChange={ event => this.onHandleChange(event) } />
                     <p>Page: {this.state.page}</p>
                 </div> 
                 <div className = "divGeneral">
                     {search.length === 0 && text === ''
-                        ? movies.map( item => <MovieItem item={item} history={this.props.history}/> )
-                        : search.map( item => <MovieItem item={item} history={this.props.history}/>  )
+                        ? movies.map( item => <MovieItem item={item} history={this.props.history}/>)
+                        : search.map( item => <MovieItem item={item} history={this.props.history}/>)
                     }
                 </div>
                 <button onClick={() => this.onViewMore()}> View more </button>

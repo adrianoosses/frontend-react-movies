@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import MoviesReducer from './moviesReducer';
+import UsersReducer from './usersReducer';
 
 const rootReducers = combineReducers({  //gestiona uno
     /* 
@@ -8,7 +8,7 @@ const rootReducers = combineReducers({  //gestiona uno
     reducers 2
     reducers 3
     */
-   MoviesReducer
+   UsersReducer
 })
 
 export default rootReducers;
