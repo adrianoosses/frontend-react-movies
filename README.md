@@ -14,6 +14,7 @@ Movie service app frontend
 <br>
 - Heroku: https://frontend-movies-app.herokuapp.com/
 
+Backend: https://github.com/adrianoosses/backend-movies.git
 ### OPTION 2:
 Download and run on terminal typing:
 ```
