@@ -6,12 +6,13 @@ import Header from '../Header/Header';
 const Buttons = (props) => {
     return (
         <>
-            
             <div className="buttonContainer">
+            <NavLink to="/profilelist">Profile List</NavLink>
                 {props.user ?
                     <>
                         <span class="logoutText">Hi, {localStorage.getItem('email')}</span>
                         <NavLink to="/profile">Profile</NavLink>
+                        
                         <NavLink to="/logout">Logout</NavLink>
                     </> :
                     <>

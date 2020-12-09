@@ -1,0 +1,19 @@
+.tableStyle{
+    display: flex;
+    flex-direction: row;
+}
+.rowH,.rowI{
+    width: 20em;
+    height: 2em;
+    border-style: solid;
+    border-color: rgb(128, 128, 128);
+    border-width: thin;
+    text-align: center;
+}
+
+.rowH{
+    color: white;
+}
+.rowI{
+    color: gray;
+}

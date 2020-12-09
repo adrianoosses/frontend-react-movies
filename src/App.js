@@ -10,6 +10,7 @@ import Buttons from './components/Buttons/Buttons';
 import Register from './containers/Register/Register';
 import Login from './containers/Login/Login';
 import Logout from './containers/Logout/Logout';
+import ProfileList from './containers/ProfileList/ProfileList';
 
 
 import React, { useState } from 'react';
@@ -27,6 +28,7 @@ function App() {
         <Buttons user={user} setUser={setUser}/>
         <Switch>
           <Route path='/' exact component={MovieList} />
+          <Route path='/profilelist' exact component={ProfileList} />
           <Route path='/moviedata' exact component={MovieData} />
           <Route path='/register' exact component={Register} />
           <Route path="/login" children={<Login user={user} setUser={setUser}/>} exact/>
